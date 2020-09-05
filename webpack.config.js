@@ -22,12 +22,28 @@ module.exports = ({ mode, presets } = { mode: "production", presets: [] }) => {
               },
             ],
           },
+          {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ["@babel/preset-env"],
+              },
+            },
+          },
         ],
       },
       output: {
         filename: "bundle.js",
       },
-      plugins: [new HtmlWebpackPlugin(), new webpack.ProgressPlugin()],
+      plugins: [
+        new HtmlWebpackPlugin({
+          template: "./src/index.html",
+          filename: "./index.html",
+        }),
+        new webpack.ProgressPlugin(),
+      ],
     },
     modeConfig(mode),
     loadPresets({ mode, presets })

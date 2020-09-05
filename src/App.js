@@ -1,14 +1,24 @@
-import "./App.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, Link } from "@reach/router";
 
-const makeButton = (buttonName) => {
-  const buttonLabel = `Button: ${buttonName}`;
+import { List } from "./views/listpage";
+import { Details } from "./views/details-page";
 
-  const button = document.createElement("button");
-  button.innerText = buttonLabel;
-
-  return button;
+const App = () => {
+  return (
+    <div>
+      <header>
+        <Link to="/">React Template</Link>
+      </header>
+      <Router>
+        <List path="/" />
+        <Details path="/details/:id" />
+      </Router>
+    </div>
+  );
 };
 
-const button = makeButton("Yay! A Button!");
-// button.style = makeColorStyle("cyan");
-document.body.appendChild(button);
+export default App;
+
+ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,3 +1,5 @@
+var path = require("path");
+
 module.exports = () => ({
   module: {
     rules: [
@@ -6,5 +8,10 @@ module.exports = () => ({
         use: ["style-loader", "css-loader"],
       },
     ],
+  },
+  devServer: {
+    watchOptions: {
+      poll: true,
+    },
   },
 });
