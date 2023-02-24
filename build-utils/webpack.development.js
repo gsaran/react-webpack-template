@@ -10,8 +10,6 @@ module.exports = () => ({
     ],
   },
   devServer: {
-    watchOptions: {
-      poll: true,
-    },
+    liveReload: true
   },
 });
